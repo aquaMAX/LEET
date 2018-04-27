@@ -1,0 +1,75 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+p {
+  white-space: no-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;	
+}
+
+a, u {
+    text-decoration: none;
+}
+
+h1 {
+	color: #0099ff;
+}
+
+img {
+vertical-align:middle
+}
+
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    /*cursor: pointer; /* Add a pointer on hover */
+	line-height: 40;
+}
+
+.logo{
+    height:170px;
+    width:auto;/*maintain aspect ratio*/
+    max-width:500px;
+}
+
+.infobar{ width:100%; }
+
+.align-left{ float: left;}
+.align-right{ float: right;}
+
+.container * {
+    padding: 0px 10px 0px 10px;
+}
+
+.mainFrame {
+  border:2px solid #999999;
+  display: block;
+}
+
+.truncate {
+  position: relative;
+  height: 250px;
+  /* need automatic multi-line height */
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /*
+  border:1px solid #999999;
+  float: left;
+  */
+  word-wrap: break-word;
+}
