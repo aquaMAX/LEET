@@ -39,9 +39,12 @@ export default class JobList extends Component {
 	});
   }
   
-  saveJob(jobId)
-  {
+  saveJob(jobId) {
 	store.dispatch({type: 'SAVE-JOB', jobId: jobId});
+  }
+  
+  checkSaved(jobId) {
+	  return store.getState().includes(jobId);
   }
   
   render() {
@@ -60,7 +63,7 @@ export default class JobList extends Component {
 				<div key={job.id}>
 					<div align="center" id="overlay" onClick={() => divClick()}>
 						<img alt="" className="logo" src={job.company_logo} style={{"float": "middle"}}/>
-						<img alt="" src={require('./images/heart.png')} onClick={() => _this.saveJob(job.id)}/>
+						<img alt="" src={require(_this.checkSaved(job.id)?'./images/heart_red.png':'./images/heart.png')} onClick={() => _this.saveJob(job.id)}/>
 					</div>
 					<div>
 						<a href={'/jobs/' + i}><h1>{job.title}</h1></a>
@@ -73,14 +76,14 @@ export default class JobList extends Component {
 						<div className={(reqIndex === undefined)? "truncate":""} style={{"clear": "both"}}>{renderHTML(job.description)}</div>
 					</div>
 					<div style={{"display":(reqIndex === undefined)? "block":"none"}}>
-						<img alt="" src={require('./images/heart.png')} style={{"float": "right"}} onClick={() => _this.saveJob(job.id)}/>
+						<img alt="" src={require(_this.checkSaved(job.id)?'./images/heart_red.png':'./images/heart.png')} style={{"float": "right"}} onClick={() => _this.saveJob(job.id)}/>
 					</div>
 					<div style={{"display":(reqIndex === undefined)? "none":"block"}}>
 						<div style={{"minheight":"30px", "display":(reqIndex === undefined)? "none":"block"}}>
 						
 						<a href={job.company_url}><h3>{job.company_url.replace(/^https?:\/\//,"").replace(/\/.*/,"")}</h3></a>
 						<div align="center">
-						<img alt="" src={require('./images/heart.png')} style={{"float": "middle"}} onClick={() => _this.saveJob(job.id)}/>
+						<img alt="" src={require(_this.checkSaved(job.id)?'./images/heart_red.png':'./images/heart.png')} style={{"float": "middle"}} onClick={() => _this.saveJob(job.id)}/>
 						<img alt="" className="logo" src={job.company_logo} style={{"float": "middle"}} onClick={() => imageClick()}/>
 						</div>
 						</div>
@@ -98,7 +101,7 @@ export default class JobList extends Component {
 		  <div className="mainFrame container"> Position
 			<div>
 				<h3 style={{"float": "right"}} id="saveCount">
-				<img alt="" src={require('./images/heart.png')}/> {store.getState().length.toString() + " saved"}
+				<img alt="" src={require('./images/heart_red.png')}/> {store.getState().length.toString() + " saved"}
 				</h3>
 			</div>
 			<ul className="App" style={{"clear": "both"}}>
